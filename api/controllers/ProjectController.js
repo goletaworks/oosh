@@ -27,7 +27,7 @@ var ProjectController = {
             name : name,
             path : path,
             password : password
-        })
+        }).fetch()
         .then(function(){
             return res.ok();
         })
@@ -55,8 +55,8 @@ var ProjectController = {
             if(password == foundProject.password){
 				req.session.authenticated = true;
                 // add the screen to the project
-                if(!foundProject.hasScreen(screenId)){
-                    foundProject.addScreen(screenId, function(updatedProject){
+                if(!Project.hasScreen(foundProject, screenId)){
+                    Project.addScreen(foundProject, screenId, function(updatedProject){
                         sails.log.debug('addScreen callback with ' + require('util').inspect(updatedProject));
                         delete updatedProject.password;
                         return res.json(updatedProject);
@@ -86,7 +86,7 @@ var ProjectController = {
             res.forbidden();
         }
 
-        Project.update({ path : projectPath }, projectInfo)
+        Project.updateOne({ path : projectPath }).set(projectInfo).fetch()
         .then(function(updated){
             sails.sockets.broadcast(projectPath , MessengerEvents.ProjectUpdated, updated[0]);
             return res.ok();
