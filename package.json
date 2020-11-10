@@ -2,7 +2,7 @@
   "name": "oosh",
   "private": true,
   "version": "0.0.0",
-  "description": "a Sails application",
+  "description": "Object-oriented sound hacking",
   "keywords": [],
   "dependencies": {
     "@sailshq/upgrade": "^1.0.9",
@@ -38,7 +38,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/motusan/oosh.git"
+    "url": "git://github.com/goletaworks/oosh.git"
   },
   "author": "moka",
   "license": ""

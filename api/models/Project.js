@@ -47,22 +47,15 @@ module.exports = {
 		return screenFound ? true : false;
 	},
 
-	addScreen : function(project, screenInfoOrId, cb){
+	addScreen : async function(project, screenInfoOrId, cb){
 		sails.log.debug('addScreen');
 		var screenInfo = typeof screenInfoOrId == 'object' ?
 				screenInfoOrId : { id : screenInfoOrId, name : screenInfoOrId, host : '', areas : [] };
 
-		if(!project.screens){
-			project.screens = [];
-		}
-
-		// for new Sails/waterline (https://sailsjs.com/documentation/reference/waterline-orm/models/replace-collection):
-		// this.screens.push(screenInfo);
-		// return this.save(function(err, updates){
-		// 	cb(updates);
-		// });
-		Project.replaceCollection(this.path, 'screens').members(screenInfo);
-		Project.findOne({ path : this.path })
+		project.screens = screenInfo;
+		Project.update({ path : project.path })
+		.set(project)
+		.fetch()
 		.then(function(foundProject){
 			delete foundProject.password;
 			cb(foundProject);

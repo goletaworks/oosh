@@ -159,8 +159,7 @@ define('ProjectManager', ['SocketService', 'Trigger', 'AreaManager', 'OoshJsonEd
         getProjectList : function(resultCallback){
             jQuery.ajax({
                 url : '/project/list',
-                method : 'GET',
-                type : 'GET'
+                method : 'GET'
             })
             .done(function(resp){
                 resultCallback(resp);

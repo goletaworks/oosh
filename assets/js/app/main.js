@@ -1,12 +1,13 @@
 require.config({
     shim : {
-        "bootstrap" : { "deps" :['jquery'] },
+        "bootstrap" : { "deps" :['jquery', 'popper'] },
         "rangeslider" : { "deps" :['jquery'] },
 		"fileupload" : { "deps" :['jquery.ui.widget'] }
     },
     paths: {
         "jquery" : "../../js/dependencies/jquery/jquery.min",
 		"jqueryui" : "../../js/dependencies/jquery-ui/jquery-ui.min",
+        "popper" : "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.2/umd/popper.min",
         "bootstrap" : "../../js/dependencies/bootstrap/bootstrap.min",
         "rangeslider" : "../../js/dependencies/rangeslider/rangeslider.min",
 		"jquery.ui.widget" : "../../js/dependencies/jquery-File-Upload/jquery.ui.widget",

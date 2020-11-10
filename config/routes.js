@@ -36,7 +36,7 @@ module.exports.routes = {
         view: 'main'
     },
 
-    'post /project/list' : 'ProjectController.list',
+    'get /project/list' : 'ProjectController.list',
     'post /project/:projectPath' : 'ProjectController.open',
     'post /project/create/:projectPath' : 'ProjectController.create',
     'post /project/update/:projectPath' : 'ProjectController.update',
